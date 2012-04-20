@@ -1,6 +1,6 @@
 == LazyScales ==
 
-LazyScales is an experiment with musical scales, (guitar) fretboards and Neo4j, the graph database.
+LazyScales is an experiment with musical scales, (guitar) fretboards and http://neo4j.org/[Neo4j], the graph database.
 LazyScales is all about basing everything on intervals, and representing these as relationships in the database.
 I wanted to see how this line of thought works out in practice, and also, if it can be leveraged for scale and chord analysis.
 
@@ -39,7 +39,7 @@ That translates into "follow the outgoing +MAJOR_SECOND+ relationship from the C
 Which in turn is already implemented in the Neo4j API for us to use.
 
 Of course we want to combine a scale with a starting note to make things usable.
-That's basically done by having one by traversing the scale and notes in parallell.
+That's basically done by traversing the scale and notes in parallell.
 The algorithm is the following:
 
 * fetch the next interval/relationship from the scale
@@ -79,7 +79,7 @@ One feature I specifically wanted is the ability to combine two scales on the fr
 
 image::lazyscales/raw/master/docs/images/cmajor-bminorpenta.png[GUI with C major and B minor penta]
 
-In this case there's an B minor pentatonic scale added to the C major scale.
+In this case there's a B minor pentatonic scale added to the C major scale.
 These scales have a lot of notes in common, but F and G are only there in the C major scale, while F# is only present in the B minor penta.
 If you're into jazz like me you might have an idea as to how this feature is useful!
 
@@ -87,6 +87,13 @@ If you're into jazz like me you might have an idea as to how this feature is use
 
 To build the application from source, use Apache Maven.
 It works at least with Maven version 3.
+Even the Windows exectuable is built using Maven.
 
 Prebuilt dowloads are found at https://github.com/nawroth/lazyscales/downloads
+
+Java version 6 or newer is required to run the application.
+
+The GUI was created by using the WindowBuilder editor in Eclipse IDE.
+The looks come from a fork of the excellent Substance library.
+The fonts used are all from the DejaVu family.
 
