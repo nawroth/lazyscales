@@ -83,4 +83,10 @@ In this case there's an B minor pentatonic scale added to the C major scale.
 These scales have a lot of notes in common, but F and G are only there in the C major scale, while F# is only present in the B minor penta.
 If you're into jazz like me you might have an idea as to how this feature is useful!
 
+=== Building / Downloads ===
+
+To build the application from source, use Apache Maven.
+It works at least with Maven version 3.
+
+Prebuilt dowloads are found at https://github.com/nawroth/lazyscales/downloads
 
