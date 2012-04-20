@@ -1,0 +1,144 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.neo4j.build</groupId>
+    <artifactId>parent-central</artifactId>
+    <version>33</version>
+    <relativePath />
+  </parent>
+  <groupId>se.nawroth</groupId>
+  <artifactId>lazyscales-gui</artifactId>
+  <version>0.3-SNAPSHOT</version>
+  <name>LazyScales</name>
+  <description>LazyScales is an application that handles scales and chords using a graphdb backend.</description>
+
+  <properties>
+    <license-text.header>GPL-3-header.txt</license-text.header>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>se.nawroth</groupId>
+      <artifactId>lazyscales</artifactId>
+      <version>0.3-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.insubstantial</groupId>
+      <artifactId>substance</artifactId>
+      <version>7.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.miglayout</groupId>
+      <artifactId>miglayout-swing</artifactId>
+      <version>4.2</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>net.sourceforge.jeuclid</groupId>
+      <artifactId>dejavu-fonts</artifactId>
+      <version>2.29</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+  </dependencies>
+  
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>2.2</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <archive>
+            <manifest>
+                <mainClass>se.nawroth.scales.gui.LazyScalesApplication</mainClass>
+                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+            </manifest>
+          </archive>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>com.akathist.maven.plugins.launch4j</groupId>
+        <artifactId>launch4j-maven-plugin</artifactId>
+        <version>1.5.1</version>
+        <executions>
+          <execution>
+            <id>launch4j</id>
+            <phase>package</phase>
+            <goals>
+              <goal>launch4j</goal>
+            </goals>
+            <configuration>
+              <headerType>gui</headerType>
+              <jar>${project.build.directory}/${project.artifactId}-${project.version}-jar-with-dependencies.jar</jar>
+              <outfile>${project.build.directory}/LazyScales.exe</outfile>
+              <downloadUrl>http://java.com/download</downloadUrl>
+              <customProcName>true</customProcName>
+              <classPath>
+                <addDependencies>true</addDependencies>
+                <mainClass>se.nawroth.scales.gui.LazyScalesApplication</mainClass>
+              </classPath>
+              <jre>
+                <minVersion>1.6.0</minVersion>
+              </jre>
+              <versionInfo>
+                <fileVersion>0.3.0.0</fileVersion>
+                <txtFileVersion>${project.version}</txtFileVersion>
+                <fileDescription>LazyScales Application</fileDescription>
+                <copyright>Anders Nawroth</copyright>
+                <productVersion>0.3.0.0</productVersion>
+                <txtProductVersion>0.3.0.0</txtProductVersion>
+                <productName>LazyScales</productName>
+                <companyName>Anders Nawroth</companyName>
+                <internalName>LazyScales</internalName>
+                <originalFilename>LazyScales.exe</originalFilename>
+              </versionInfo>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+
+  <developers>
+    <developer>
+      <id>nawroth</id>
+      <name>Anders Nawroth</name>
+      <email>anders {a} nawroth.se</email>
+      <url>http://www.anders.nawroth.se/</url>
+      <timezone>+1</timezone>
+    </developer>
+  </developers>
+
+  <organization>
+    <name>Anders Nawroth</name>
+    <url>http://www.anders.nawroth.se/</url>
+  </organization>
+
+</project>

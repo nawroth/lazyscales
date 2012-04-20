@@ -1,0 +1,17 @@
+*~
+\#*
+*/target/
+/target/
+*.swp
+.project
+.classpath
+.settings
+.checkstyle
+*.iws
+*.ipr
+*.iml
+.idea/
+.DS_Store
+*.jar
+*.zip
+

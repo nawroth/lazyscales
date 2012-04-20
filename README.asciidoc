@@ -1,0 +1,86 @@
+== LazyScales ==
+
+LazyScales is an experiment with musical scales, (guitar) fretboards and Neo4j, the graph database.
+LazyScales is all about basing everything on intervals, and representing these as relationships in the database.
+I wanted to see how this line of thought works out in practice, and also, if it can be leveraged for scale and chord analysis.
+
+=== Scales ===
+
+To start with, this is how scales are represented by _relationships_ in the database:
+
+image::lazyscales/raw/master/docs/images/diatonic.png[Diatonic Scales]
+
+So a scale is just a series of _intervals_.
+And as the scale doesn't really end after one octave, it's connected back to itself with the last interval.
+This way, the scale can be represented by a relationship pointing to it's starting point within a circular chain of intervals.
+
+One cool thing about this is that scales relate to each other by something called _modes_.
+This means that different scales use the same sequence of intervals, just with a different starting point.
+The image above depicts some modes of the common Ionian scale (that's just a plain major scale).
+
+To keep track of all the scales I like to put them into families (and subfamilies).
+Here's an example with a minimal set of data:
+
+image::lazyscales/raw/master/docs/images/scale-families.png[Scale Families]
+
+The Chromatic scale is a special case; there's a shortcut to it for internal use in the application.
+
+=== Notes ===
+
+Notes are represented by _nodes_ in the database:
+
+image::lazyscales/raw/master/docs/images/notes.png[Notes]
+
+The database is populated with all possible relationships between the notes -- the image is just a small excerpt of that data.
+
+So having a note, finding related notes by interval is really easy. 
+What's the note a major second above the C note?
+That translates into "follow the outgoing +MAJOR_SECOND+ relationship from the C node" on the database level.
+Which in turn is already implemented in the Neo4j API for us to use.
+
+Of course we want to combine a scale with a starting note to make things usable.
+That's basically done by having one by traversing the scale and notes in parallell.
+The algorithm is the following:
+
+* fetch the next interval/relationship from the scale
+* use that relationship to pick the next note from the notes
+* repeat until done
+
+=== Tuning in ===
+
+Among musical instrument, I prefer playing guitar.
+And you might not be aware of it, but people tune their guitars in a lot different ways.
+In my case I go for something called E-flat tuning, meaning that I tune all strings down by a half step compared to the standard guitar tuning.
+Let's have a look at how to represent this in the database.
+
+image::lazyscales/raw/master/docs/images/tunings.png[Tunings]
+
+Again, we use intervals as the basis.
+The intervals will also implicitly tell us how many strings there are on the instrument!
+
+The tuning itself is represented by a node.
+From that node, relationships point to the starting node of the intervals as well as to the root note/node of the tuning.
+I this case we have the standard tuning on the left, pointing to the E root note/node, while the E-flat tuning on the right points to E-flat.
+Both tunings share the same sequence of intervals.
+
+At the top of the image, you can see that there's a structure in place to categorize the tunings, just like with the scales.
+
+=== Fretting it ===
+
+So what's the deal with this exercise, delving into the world of intervals?
+Well, I tend to get confused when it comes to projecting all the scales onto the guitar fretboard.
+To remedy that, I wrote up a GUI which visualizes the notes on a fretboard as well.
+
+This is the C major scale projected on a standard tuned guitar:
+
+image::lazyscales/raw/master/docs/images/gui.png[GUI with C major]
+
+One feature I specifically wanted is the ability to combine two scales on the fretboard:
+
+image::lazyscales/raw/master/docs/images/cmajor-bminorpenta.png[GUI with C major and B minor penta]
+
+In this case there's an B minor pentatonic scale added to the C major scale.
+These scales have a lot of notes in common, but F and G are only there in the C major scale, while F# is only present in the B minor penta.
+If you're into jazz like me you might have an idea as to how this feature is useful!
+
+

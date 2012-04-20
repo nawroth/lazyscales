@@ -1,0 +1,454 @@
+<class-diagram version="0.9.86" automaticImage="PNG" icons="true" always-add-relationships="true" generalizations="true" 
+  realizations="true" associations="true" dependencies="true" nesting-relationships="true">  
+  <enumeration corner="BOTTOM_RIGHT" language="java" name="se.nawroth.scales.interval.LatinInterval" 
+    project="lazyscales" file="/lazyscales/src/main/java/se/nawroth/scales/interval/LatinInterval.java" binary="false">    
+    <position x="720" y="429" width="144" height="46"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="true" protected="true" private="false"/>    
+    </display>  
+  </enumeration>  
+  <enumeration corner="BOTTOM_RIGHT" language="java" name="se.nawroth.scales.interval.DiatonicInterval" 
+    project="lazyscales" file="/lazyscales/src/main/java/se/nawroth/scales/interval/DiatonicInterval.java" 
+    binary="false">    
+    <position x="904" y="429" width="144" height="46"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="true" protected="true" private="false"/>    
+    </display>  
+  </enumeration>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="se.nawroth.scales.interval.Interval" project="lazyscales" 
+    file="/lazyscales/src/main/java/se/nawroth/scales/interval/Interval.java" binary="false">    
+    <position x="812" y="515" width="144" height="46"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="true" protected="true" private="false"/>    
+    </display>  
+  </interface>  
+  <class corner="BOTTOM_RIGHT" language="java" name="se.nawroth.scales.note.Notes" project="lazyscales" 
+    file="/lazyscales/src/main/java/se/nawroth/scales/note/Notes.java" binary="false">    
+    <position x="732" y="225" width="132" height="46"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="se.nawroth.scales.note.NoteIterator" project="lazyscales" 
+    file="/lazyscales/src/main/java/se/nawroth/scales/note/NoteIterator.java" binary="false">    
+    <position x="539" y="225" width="132" height="46"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="se.nawroth.scales.note.NoteService" project="lazyscales" 
+    file="/lazyscales/src/main/java/se/nawroth/scales/note/NoteService.java" binary="false">    
+    <position x="1105" y="37" width="132" height="46"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="se.nawroth.scales.api.Note" project="lazyscales" 
+    file="/lazyscales/src/main/java/se/nawroth/scales/api/Note.java" binary="false">    
+    <position x="499" y="327" width="132" height="46"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <enumeration corner="BOTTOM_RIGHT" language="java" name="se.nawroth.scales.note.NoteRepository" project="lazyscales" 
+    file="/lazyscales/src/main/java/se/nawroth/scales/note/NoteRepository.java" binary="false">    
+    <position x="1535" y="123" width="132" height="46"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="true" protected="true" private="false"/>    
+    </display>  
+  </enumeration>  
+  <class corner="BOTTOM_RIGHT" language="java" name="se.nawroth.scales.scale.ScaleIterator" project="lazyscales" 
+    file="/lazyscales/src/main/java/se/nawroth/scales/scale/ScaleIterator.java" binary="false">    
+    <position x="300" y="327" width="136" height="46"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="se.nawroth.scales.scale.ScaleFamilyImpl" project="lazyscales" 
+    file="/lazyscales/src/main/java/se/nawroth/scales/scale/ScaleFamilyImpl.java" binary="false">    
+    <position x="1105" y="225" width="205" height="62"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="se.nawroth.scales.scale.RawScale" project="lazyscales" 
+    file="/lazyscales/src/main/java/se/nawroth/scales/scale/RawScale.java" binary="false">    
+    <position x="1728" y="225" width="136" height="46"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="se.nawroth.scales.scale.ScaleService" project="lazyscales" 
+    file="/lazyscales/src/main/java/se/nawroth/scales/scale/ScaleService.java" binary="false">    
+    <position x="771" y="123" width="136" height="46"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="se.nawroth.scales.scale.RawScale.RawScaleEntity" 
+    project="lazyscales" file="/lazyscales/src/main/java/se/nawroth/scales/scale/RawScale.java" binary="false">    
+    <position x="1749" y="327" width="136" height="46"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="se.nawroth.scales.scale.ScaleFamilyService" project="lazyscales" 
+    file="/lazyscales/src/main/java/se/nawroth/scales/scale/ScaleFamilyService.java" binary="false">    
+    <position x="947" y="123" width="137" height="46"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="se.nawroth.scales.scale.ScaleSearchService" project="lazyscales" 
+    file="/lazyscales/src/main/java/se/nawroth/scales/scale/ScaleSearchService.java" binary="false">    
+    <position x="904" y="225" width="140" height="46"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="se.nawroth.scales.scale.ScaleNavigation" project="lazyscales" 
+    file="/lazyscales/src/main/java/se/nawroth/scales/scale/ScaleNavigation.java" binary="false">    
+    <position x="1166" y="123" width="329" height="62"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="se.nawroth.scales.scale.Scale" project="lazyscales" 
+    file="/lazyscales/src/main/java/se/nawroth/scales/scale/Scale.java" binary="false">    
+    <position x="1105" y="327" width="136" height="62"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <enumeration corner="BOTTOM_RIGHT" language="java" name="se.nawroth.scales.scale.RawScale.RawScales" 
+    project="lazyscales" file="/lazyscales/src/main/java/se/nawroth/scales/scale/RawScale.java" binary="false">    
+    <position x="1925" y="327" width="136" height="46"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="true" protected="true" private="false"/>    
+    </display>  
+  </enumeration>  
+  <class corner="BOTTOM_RIGHT" language="java" name="se.nawroth.scales.tuning.TuningFamilyService" project="lazyscales" 
+    file="/lazyscales/src/main/java/se/nawroth/scales/tuning/TuningFamilyService.java" binary="false">    
+    <position x="41" y="225" width="143" height="46"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="se.nawroth.scales.tuning.TuningImpl" project="lazyscales" 
+    file="/lazyscales/src/main/java/se/nawroth/scales/tuning/TuningImpl.java" binary="false">    
+    <position x="297" y="225" width="139" height="62"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="se.nawroth.scales.tuning.TuningFamilyImpl" project="lazyscales" 
+    file="/lazyscales/src/main/java/se/nawroth/scales/tuning/TuningFamilyImpl.java" binary="false">    
+    <position x="41" y="327" width="219" height="62"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="se.nawroth.scales.tuning.TuningService" project="lazyscales" 
+    file="/lazyscales/src/main/java/se/nawroth/scales/tuning/TuningService.java" binary="false">    
+    <position x="339" y="123" width="139" height="46"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <dependency>    
+    <bendpoint x="701" y="225"/>    
+    <bendpoint x="701" y="327"/>    
+    <source project="lazyscales" name="se.nawroth.scales.scale.ScaleService" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/ScaleService.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.interval.DiatonicInterval" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/interval/DiatonicInterval.java" binary="false"/>  
+  </dependency>  
+  <association>    
+    <source project="lazyscales" name="se.nawroth.scales.scale.ScaleService" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/ScaleService.java" binary="false" navigable="false">      
+      <attribute name="scaleSearchService"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="lazyscales" name="se.nawroth.scales.scale.ScaleSearchService" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/ScaleSearchService.java" binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association>    
+    <source project="lazyscales" name="se.nawroth.scales.note.NoteService" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/note/NoteService.java" binary="false" navigable="false">      
+      <attribute name="scaleFamilyService"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="lazyscales" name="se.nawroth.scales.scale.ScaleFamilyService" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/ScaleFamilyService.java" binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association>    
+    <source project="lazyscales" name="se.nawroth.scales.note.NoteService" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/note/NoteService.java" binary="false" navigable="false">      
+      <attribute name="scaleService"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="lazyscales" name="se.nawroth.scales.scale.ScaleService" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/ScaleService.java" binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency>    
+    <source project="lazyscales" name="se.nawroth.scales.scale.RawScale" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/RawScale.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.scale.Scale" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/Scale.java" binary="false"/>  
+  </dependency>  
+  <dependency>    
+    <bendpoint x="680" y="327"/>    
+    <source project="lazyscales" name="se.nawroth.scales.note.NoteIterator" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/note/NoteIterator.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.interval.DiatonicInterval" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/interval/DiatonicInterval.java" binary="false"/>  
+  </dependency>  
+  <dependency>    
+    <source project="lazyscales" name="se.nawroth.scales.tuning.TuningService" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/tuning/TuningService.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.tuning.TuningImpl" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/tuning/TuningImpl.java" binary="false"/>  
+  </dependency>  
+  <dependency>    
+    <source project="lazyscales" name="se.nawroth.scales.scale.ScaleIterator" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/ScaleIterator.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.interval.DiatonicInterval" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/interval/DiatonicInterval.java" binary="false"/>  
+  </dependency>  
+  <dependency>    
+    <bendpoint x="214" y="225"/>    
+    <source project="lazyscales" name="se.nawroth.scales.tuning.TuningService" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/tuning/TuningService.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.tuning.TuningFamilyImpl" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/tuning/TuningFamilyImpl.java" binary="false"/>  
+  </dependency>  
+  <dependency>    
+    <source project="lazyscales" name="se.nawroth.scales.api.Note" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/api/Note.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.interval.DiatonicInterval" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/interval/DiatonicInterval.java" binary="false"/>  
+  </dependency>  
+  <nesting>    
+    <source project="lazyscales" name="se.nawroth.scales.scale.RawScale" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/RawScale.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.scale.RawScale.RawScaleEntity" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/RawScale.java" binary="false"/>  
+  </nesting>  
+  <dependency>    
+    <source project="lazyscales" name="se.nawroth.scales.tuning.TuningFamilyService" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/tuning/TuningFamilyService.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.tuning.TuningFamilyImpl" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/tuning/TuningFamilyImpl.java" binary="false"/>  
+  </dependency>  
+  <dependency>    
+    <source project="lazyscales" name="se.nawroth.scales.tuning.TuningImpl" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/tuning/TuningImpl.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.tuning.TuningFamilyImpl" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/tuning/TuningFamilyImpl.java" binary="false"/>  
+  </dependency>  
+  <dependency>    
+    <source project="lazyscales" name="se.nawroth.scales.note.NoteService" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/note/NoteService.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.note.NoteRepository" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/note/NoteRepository.java" binary="false"/>  
+  </dependency>  
+  <dependency>    
+    <bendpoint x="913" y="327"/>    
+    <source project="lazyscales" name="se.nawroth.scales.scale.ScaleSearchService" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/ScaleSearchService.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.interval.DiatonicInterval" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/interval/DiatonicInterval.java" binary="false"/>  
+  </dependency>  
+  <dependency>    
+    <source project="lazyscales" name="se.nawroth.scales.note.NoteIterator" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/note/NoteIterator.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.api.Note" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/api/Note.java" binary="false"/>  
+  </dependency>  
+  <nesting>    
+    <source project="lazyscales" name="se.nawroth.scales.scale.RawScale" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/RawScale.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.scale.RawScale.RawScales" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/RawScale.java" binary="false"/>  
+  </nesting>  
+  <dependency>    
+    <bendpoint x="1114" y="123"/>    
+    <source project="lazyscales" name="se.nawroth.scales.note.NoteService" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/note/NoteService.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.scale.ScaleFamilyImpl" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/ScaleFamilyImpl.java" binary="false"/>  
+  </dependency>  
+  <realization>    
+    <source project="lazyscales" name="se.nawroth.scales.interval.DiatonicInterval" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/interval/DiatonicInterval.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.interval.Interval" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/interval/Interval.java" binary="false"/>  
+  </realization>  
+  <dependency>    
+    <bendpoint x="487" y="225"/>    
+    <source project="lazyscales" name="se.nawroth.scales.tuning.TuningService" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/tuning/TuningService.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.api.Note" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/api/Note.java" binary="false"/>  
+  </dependency>  
+  <dependency>    
+    <bendpoint x="1697" y="123"/>    
+    <bendpoint x="1697" y="225"/>    
+    <bendpoint x="1697" y="327"/>    
+    <source project="lazyscales" name="se.nawroth.scales.note.NoteService" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/note/NoteService.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.interval.DiatonicInterval" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/interval/DiatonicInterval.java" binary="false"/>  
+  </dependency>  
+  <dependency>    
+    <source project="lazyscales" name="se.nawroth.scales.scale.ScaleService" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/ScaleService.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.scale.ScaleFamilyImpl" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/ScaleFamilyImpl.java" binary="false"/>  
+  </dependency>  
+  <dependency>    
+    <source project="lazyscales" name="se.nawroth.scales.scale.Scale" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/Scale.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.interval.DiatonicInterval" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/interval/DiatonicInterval.java" binary="false"/>  
+  </dependency>  
+  <dependency>    
+    <source project="lazyscales" name="se.nawroth.scales.scale.ScaleSearchService" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/ScaleSearchService.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.scale.Scale" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/Scale.java" binary="false"/>  
+  </dependency>  
+  <dependency>    
+    <bendpoint x="1361" y="225"/>    
+    <source project="lazyscales" name="se.nawroth.scales.scale.ScaleNavigation" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/ScaleNavigation.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.scale.Scale" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/Scale.java" binary="false"/>  
+  </dependency>  
+  <dependency>    
+    <source project="lazyscales" name="se.nawroth.scales.tuning.TuningImpl" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/tuning/TuningImpl.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.api.Note" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/api/Note.java" binary="false"/>  
+  </dependency>  
+  <dependency>    
+    <bendpoint x="1135" y="123"/>    
+    <bendpoint x="1340" y="225"/>    
+    <source project="lazyscales" name="se.nawroth.scales.note.NoteService" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/note/NoteService.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.scale.Scale" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/Scale.java" binary="false"/>  
+  </dependency>  
+  <dependency>    
+    <source project="lazyscales" name="se.nawroth.scales.scale.ScaleNavigation" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/ScaleNavigation.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.scale.ScaleFamilyImpl" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/ScaleFamilyImpl.java" binary="false"/>  
+  </dependency>  
+  <dependency>    
+    <bendpoint x="1074" y="225"/>    
+    <source project="lazyscales" name="se.nawroth.scales.scale.ScaleService" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/ScaleService.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.scale.Scale" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/Scale.java" binary="false"/>  
+  </dependency>  
+  <dependency>    
+    <bendpoint x="508" y="123"/>    
+    <bendpoint x="508" y="225"/>    
+    <source project="lazyscales" name="se.nawroth.scales.note.NoteService" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/note/NoteService.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.api.Note" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/api/Note.java" binary="false"/>  
+  </dependency>  
+  <dependency>    
+    <bendpoint x="466" y="225"/>    
+    <bendpoint x="466" y="327"/>    
+    <source project="lazyscales" name="se.nawroth.scales.tuning.TuningService" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/tuning/TuningService.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.interval.DiatonicInterval" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/interval/DiatonicInterval.java" binary="false"/>  
+  </dependency>  
+  <dependency>    
+    <source project="lazyscales" name="se.nawroth.scales.scale.ScaleFamilyImpl" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/ScaleFamilyImpl.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.scale.Scale" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/Scale.java" binary="false"/>  
+  </dependency>  
+  <realization>    
+    <source project="lazyscales" name="se.nawroth.scales.interval.LatinInterval" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/interval/LatinInterval.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.interval.Interval" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/interval/Interval.java" binary="false"/>  
+  </realization>  
+  <association>    
+    <bendpoint x="1382" y="225"/>    
+    <bendpoint x="1382" y="327"/>    
+    <source project="lazyscales" name="se.nawroth.scales.note.NoteRepository" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/note/NoteRepository.java" binary="false" navigable="false">      
+      <attribute name="interval"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="lazyscales" name="se.nawroth.scales.interval.DiatonicInterval" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/interval/DiatonicInterval.java" binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency>    
+    <bendpoint x="1718" y="327"/>    
+    <source project="lazyscales" name="se.nawroth.scales.scale.RawScale" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/RawScale.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.interval.DiatonicInterval" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/interval/DiatonicInterval.java" binary="false"/>  
+  </dependency>  
+  <dependency>    
+    <source project="lazyscales" name="se.nawroth.scales.note.Notes" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/note/Notes.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.api.Note" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/api/Note.java" binary="false"/>  
+  </dependency>  
+  <dependency>    
+    <source project="lazyscales" name="se.nawroth.scales.scale.ScaleFamilyService" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/ScaleFamilyService.java" binary="false"/>    
+    <target project="lazyscales" name="se.nawroth.scales.scale.ScaleFamilyImpl" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/ScaleFamilyImpl.java" binary="false"/>  
+  </dependency>  
+  <association>    
+    <source project="lazyscales" name="se.nawroth.scales.note.Notes" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/note/Notes.java" binary="false" navigable="false">      
+      <attribute name="scale"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="lazyscales" name="se.nawroth.scales.scale.Scale" 
+      file="/lazyscales/src/main/java/se/nawroth/scales/scale/Scale.java" binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" package="true" initial-value="false" signature="true" visibility="true">    
+    <attributes public="false" package="false" protected="false" private="false"/>    
+    <operations public="false" package="true" protected="true" private="false"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
