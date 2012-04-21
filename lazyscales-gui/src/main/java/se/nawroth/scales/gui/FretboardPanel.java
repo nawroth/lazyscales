@@ -329,6 +329,11 @@ public class FretboardPanel extends JPanel
         this.notes = notes;
     }
 
+    public void setNumberOfFrets( int frets )
+    {
+        this.numberOfFrets = frets;
+    }
+
     public void pinCurrentScale()
     {
         pinnedNotes = notes;

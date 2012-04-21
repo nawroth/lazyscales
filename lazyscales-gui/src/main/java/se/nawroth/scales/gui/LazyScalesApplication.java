@@ -41,6 +41,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JSlider;
 import javax.swing.JTree;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
@@ -91,6 +92,7 @@ public class LazyScalesApplication
     private JLabel scaleNotesLabel;
     private boolean previousIsFlat;
     private JCheckBox pinCheckBox;
+    private JSlider fretsSlider;
 
     /**
      * Launch the application.
@@ -198,11 +200,31 @@ public class LazyScalesApplication
         scaleNotesLabel.setVerticalAlignment( SwingConstants.TOP );
         scaleNotesLabel.setFont( Fonts.SANS.font( 18 ) );
         frmLazyscales.getContentPane()
-                .add( scaleNotesLabel, "cell 2 2 2 1" );
+                .add( scaleNotesLabel, "cell 3 2 2 1" );
 
         fretboardPanel = new FretboardPanel( services );
         frmLazyscales.getContentPane()
-                .add( fretboardPanel, "cell 0 3 4 1,shrinkx 0,grow" );
+                .add( fretboardPanel, "cell 1 3 4 1,shrinkx 0,grow" );
+
+        fretsSlider = new JSlider();
+        fretsSlider.setToolTipText( "Set the number of frets to use." );
+        fretsSlider.setFont( Fonts.SANS.font( 12 ) );
+        fretsSlider.addChangeListener( new ChangeListener()
+        {
+            @Override
+            public void stateChanged( ChangeEvent ce )
+            {
+                fretboardPanel.setNumberOfFrets( fretsSlider.getValue() );
+                fretboardPanel.repaint();
+            }
+        } );
+        frmLazyscales.getContentPane()
+                .add( fretsSlider, "cell 0 3,alignx center,growy" );
+        fretsSlider.setValue( 16 );
+        fretsSlider.setMinorTickSpacing( 1 );
+        fretsSlider.setMaximum( 24 );
+        fretsSlider.setMinimum( 6 );
+        fretsSlider.setOrientation( SwingConstants.VERTICAL );
 
         pinCheckBox = new JCheckBox( "Pin" );
         pinCheckBox.setEnabled( false );
@@ -231,7 +253,7 @@ public class LazyScalesApplication
         pinCheckBox.setVerticalAlignment( SwingConstants.BOTTOM );
         pinCheckBox.setHorizontalAlignment( SwingConstants.RIGHT );
         frmLazyscales.getContentPane()
-                .add( pinCheckBox, "cell 1 2" );
+                .add( pinCheckBox, "cell 2 2" );
     }
 
     private void initializeScaleFamilyTree()
@@ -245,11 +267,11 @@ public class LazyScalesApplication
                 .setLayout(
                         new MigLayout(
                                 "",
-                                "[88.00][86.00][200:254.00,grow][200px:176.00,grow,shrinkprio 30]",
+                                "[24.00][35.00][86.00][200:254.00,grow][200px:176.00,grow,shrinkprio 30]",
                                 "[80px:n][160px:n][][240px:n,grow]" ) );
         scaleFamilyTree = new FamilyTree( rootNode );
         frmLazyscales.getContentPane()
-                .add( scaleFamilyTree, "cell 0 0 2 2,grow" );
+                .add( scaleFamilyTree, "cell 0 0 3 2,grow" );
         scaleFamilyTree.addTreeSelectionListener( new TreeSelectionListener()
         {
             @Override
@@ -272,7 +294,7 @@ public class LazyScalesApplication
         addTuningFamilyChildren( rootNode );
         tuningFamilyTree = new FamilyTree( rootNode );
         frmLazyscales.getContentPane()
-                .add( tuningFamilyTree, "cell 3 0,grow" );
+                .add( tuningFamilyTree, "cell 4 0,grow" );
         tuningFamilyTree.addTreeSelectionListener( new TreeSelectionListener()
         {
             @Override
@@ -334,7 +356,7 @@ public class LazyScalesApplication
             }
         } );
         frmLazyscales.getContentPane()
-                .add( scaleList, "cell 2 0 1 2,grow" );
+                .add( scaleList, "cell 3 0 1 2,grow" );
     }
 
     private void scaleOrNoteOrTuningOrSignChange()
@@ -395,7 +417,7 @@ public class LazyScalesApplication
         tuningListData = new DefaultListModel();
         tuningList = new MonoList( tuningListData );
         frmLazyscales.getContentPane()
-                .add( tuningList, "cell 3 1,grow" );
+                .add( tuningList, "cell 4 1,grow" );
         tuningList.addListSelectionListener( new ListSelectionListener()
         {
             @Override
@@ -414,7 +436,7 @@ public class LazyScalesApplication
 
         frmLazyscales.getContentPane()
                 .add( sharpFlatPanel,
-                        "flowx,cell 0 2,alignx left,aligny bottom" );
+                        "flowx,cell 0 2 2 1,alignx left,aligny bottom" );
         flatRadio = new JRadioButton( "♭" );
         flatRadio.setFont( Fonts.SANS.font( 16 ) );
         sharpFlatPanel.add( flatRadio );
@@ -449,7 +471,7 @@ public class LazyScalesApplication
         } );
 
         frmLazyscales.getContentPane()
-                .add( noteCombo, "flowx,cell 1 2,alignx left,aligny bottom" );
+                .add( noteCombo, "flowx,cell 2 2,alignx left,aligny bottom" );
         refreshNoteCombo();
     }
 
