@@ -52,6 +52,8 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreePath;
 
 import net.miginfocom.swing.MigLayout;
 
@@ -195,6 +197,18 @@ public class LazyScalesApplication
         initializeTuningList();
         initializeSharpFlat();
         initializeNoteCombo();
+
+        // TODO this could need some cleanup
+        TreeModel tuningData = tuningFamilyTree.getModel();
+        Object[] tuningFamilyPath = new Object[2];
+        tuningFamilyPath[0] = tuningData.getRoot();
+        tuningFamilyPath[1] = tuningData.getChild( tuningFamilyPath[0], 0 );
+        if ( ( (TuningFamily) ( (DefaultMutableTreeNode) tuningFamilyPath[1] ).getUserObject() ).getName()
+                .equals( "Standard tunings" ) )
+        {
+            tuningFamilyTree.setSelectionPath( new TreePath( tuningFamilyPath ) );
+        }
+        tuningList.setSelectedIndex( 1 );
 
         scaleNotesLabel = new JLabel( "" );
         scaleNotesLabel.setVerticalAlignment( SwingConstants.TOP );
