@@ -43,7 +43,7 @@ public class FretboardPanel extends JPanel
     /**
      * org.pushingpixels.substance.api.colorscheme.OliveColorScheme.mainMidColor
      */
-    private static final Color PINNED_NOTE_COLOR = new Color( 165, 174, 129 );
+    static final Color PINNED_NOTE_COLOR = new Color( 165, 174, 129 );
     private static final Color TUNING_NOTE_FONT_COLOR = Color.lightGray;
     private static final Color TUNING_NOTE_CIRCLE_COLOR = Color.lightGray;
     /**
@@ -362,6 +362,11 @@ public class FretboardPanel extends JPanel
     public void unpinCurrentScale()
     {
         pinnedNotes = null;
+    }
+
+    public Notes getPinnedScale()
+    {
+        return pinnedNotes;
     }
 
     private enum NotePinnedState
