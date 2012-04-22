@@ -291,10 +291,13 @@ public class LazyScalesApplication
             @Override
             public void valueChanged( TreeSelectionEvent tse )
             {
-                DefaultMutableTreeNode node = (DefaultMutableTreeNode) tse.getNewLeadSelectionPath()
-                        .getLastPathComponent();
-                ScaleFamily scaleFamily = (ScaleFamily) node.getUserObject();
-                updateScaleList( scaleFamily );
+                TreePath newLeadSelectionPath = tse.getNewLeadSelectionPath();
+                if ( newLeadSelectionPath != null )
+                {
+                    DefaultMutableTreeNode node = (DefaultMutableTreeNode) newLeadSelectionPath.getLastPathComponent();
+                    ScaleFamily scaleFamily = (ScaleFamily) node.getUserObject();
+                    updateScaleList( scaleFamily );
+                }
             }
         } );
     }

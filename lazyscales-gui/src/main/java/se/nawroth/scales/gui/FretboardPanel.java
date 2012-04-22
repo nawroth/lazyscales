@@ -227,7 +227,7 @@ public class FretboardPanel extends JPanel
                     else if ( state == NotePinnedState.BOTH )
                     {
                         currentNote = note;
-                        circleColor = PINNED_NOTE_COLOR;
+                        circleColor = CURRENT_NOTE_COLOR;
                         fontColor = CURRENT_NOTE_COLOR;
                         bgColor = STARTING_NOTE_BGCOLOR;
                     }
@@ -245,9 +245,29 @@ public class FretboardPanel extends JPanel
                     }
                     int circleX = xPos - circleHalfSize;
                     int circleY = yPos - circleHalfSize;
-                    g2.fillOval( circleX, circleY, circleSize, circleSize );
+                    if ( state == NotePinnedState.ONLY_CURRENT
+                         ^ pinnedNotes != null )
+                    {
+                        g2.fillOval( circleX, circleY, circleSize, circleSize );
+                    }
+                    else
+                    {
+                        g2.fillRoundRect( circleX, circleY, circleSize,
+                                circleSize, circleHalfSize, circleHalfSize );
+                    }
+
                     g2.setPaint( circleColor );
-                    g2.drawOval( circleX, circleY, circleSize, circleSize );
+
+                    if ( state == NotePinnedState.ONLY_CURRENT
+                         ^ pinnedNotes != null )
+                    {
+                        g2.drawOval( circleX, circleY, circleSize, circleSize );
+                    }
+                    else
+                    {
+                        g2.drawRoundRect( circleX, circleY, circleSize,
+                                circleSize, circleHalfSize, circleHalfSize );
+                    }
 
                     g2.setPaint( fontColor );
                     g2.drawString( str, xPos - fontMetrics.stringWidth( str )
