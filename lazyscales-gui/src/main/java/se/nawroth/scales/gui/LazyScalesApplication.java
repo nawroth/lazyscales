@@ -71,7 +71,6 @@ import se.nawroth.scales.note.Notes;
 
 public class LazyScalesApplication
 {
-
     private JFrame frmLazyscales;
     private LazyScales lazy;
     private JTree scaleFamilyTree;

@@ -53,7 +53,8 @@ public class FretboardPanel extends JPanel
     private static final Color DOT_COLOR = new Color( 205, 212, 182 );
     private static final Color STRINGS_FRETS_COLOR = Color.darkGray;
     private static final Color STARTING_NOTE_BGCOLOR = Color.lightGray;
-    private static final Color PINNED_STARTING_NOTE_BGCOLOR = Color.black;
+    private static final Color PINNED_STARTING_NOTE_BGCOLOR = new Color( 216,
+            216, 216 );
     private static final int CIRCLE_DIVIDER = 20;
     private static final int STROKE_DIVIDER = 330;
     private static final int PANEL_WIDTH_MULTIPLIER = 2;
