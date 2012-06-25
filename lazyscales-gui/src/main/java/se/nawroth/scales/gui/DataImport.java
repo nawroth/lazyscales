@@ -19,8 +19,8 @@
  */
 package se.nawroth.scales.gui;
 
-import static se.nawroth.scales.api.DiatonicInterval.FOURTH;
 import static se.nawroth.scales.api.DiatonicInterval.FIFTH;
+import static se.nawroth.scales.api.DiatonicInterval.FOURTH;
 import static se.nawroth.scales.api.DiatonicInterval.MAJOR_SECOND;
 import static se.nawroth.scales.api.DiatonicInterval.MAJOR_THIRD;
 import static se.nawroth.scales.api.DiatonicInterval.MINOR_SECOND;
@@ -253,7 +253,7 @@ public class DataImport
                                     .note( NoteRepository.E ), FOURTH, FOURTH,
                             FOURTH );
             services.getTuningService()
-                    .newTuning( bassTunings, "Fifths bass tuning (CGDA)",
+                    .newTuning( bassTunings, "Fifths bass tuning",
                             services.getNoteService()
                                     .note( NoteRepository.C ), FIFTH, FIFTH,
                             FIFTH );

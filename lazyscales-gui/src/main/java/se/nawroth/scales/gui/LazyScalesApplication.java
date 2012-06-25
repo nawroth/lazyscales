@@ -450,7 +450,6 @@ public class LazyScalesApplication
             fretboardPanel.setTuning( tuning );
             previousTuning = tuning;
             fretboardPanel.repaint();
-            System.out.println( tuning );
         }
     }
 
