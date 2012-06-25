@@ -239,6 +239,8 @@ public class LazyScalesApplication
         fretsSlider.setMinimum( 6 );
         fretsSlider.setOrientation( SwingConstants.VERTICAL );
 
+        updateTuning();
+
         pinCheckBox = new JCheckBox( "Pin" );
         pinCheckBox.setEnabled( false );
         pinCheckBox.addActionListener( new ActionListener()
@@ -359,6 +361,7 @@ public class LazyScalesApplication
         if ( tuningListData.size() > 0 )
         {
             tuningList.setSelectedIndex( 0 );
+            updateTuning();
         }
     }
 
@@ -371,14 +374,14 @@ public class LazyScalesApplication
             @Override
             public void valueChanged( ListSelectionEvent selEvent )
             {
-                scaleOrNoteOrTuningOrSignChange();
+                scaleOrNoteOrSignChange();
             }
         } );
         frmLazyscales.getContentPane()
                 .add( scaleList, "cell 3 0 1 2,grow" );
     }
 
-    private void scaleOrNoteOrTuningOrSignChange()
+    private void scaleOrNoteOrSignChange()
     {
         int selectedScaleIndex = scaleList.getSelectedIndex();
         if ( selectedScaleIndex == -1 )
@@ -407,26 +410,16 @@ public class LazyScalesApplication
 
         scaleNotesLabel.setText( scaleNotes.toString() );
 
-        int selectedTuningIndex = tuningList.getSelectedIndex();
-        if ( selectedTuningIndex == -1 )
-        {
-            return;
-        }
-        Tuning tuning = (Tuning) tuningListData.elementAt( selectedTuningIndex );
-
         if ( scale.equals( previousScale )
-             && startingNote.equals( previousNote )
-             && tuning.equals( previousTuning ) && isFlat == previousIsFlat )
+             && startingNote.equals( previousNote ) && isFlat == previousIsFlat )
         {
             return;
         }
 
-        previousTuning = tuning;
         previousNote = startingNote;
         previousScale = scale;
         previousIsFlat = isFlat;
 
-        fretboardPanel.setTuning( tuning );
         fretboardPanel.setNotes( scaleNotes );
         fretboardPanel.repaint();
         pinCheckBox.setEnabled( true );
@@ -443,9 +436,22 @@ public class LazyScalesApplication
             @Override
             public void valueChanged( ListSelectionEvent selEvent )
             {
-                scaleOrNoteOrTuningOrSignChange();
+                updateTuning();
             }
         } );
+    }
+
+    private void updateTuning()
+    {
+        Tuning tuning = getCurrentTuning();
+        if ( tuning != null && fretboardPanel != null
+             && !tuning.equals( previousTuning ) )
+        {
+            fretboardPanel.setTuning( tuning );
+            previousTuning = tuning;
+            fretboardPanel.repaint();
+            System.out.println( tuning );
+        }
     }
 
     private void initializeSharpFlat()
@@ -486,7 +492,7 @@ public class LazyScalesApplication
             @Override
             public void actionPerformed( ActionEvent e )
             {
-                scaleOrNoteOrTuningOrSignChange();
+                scaleOrNoteOrSignChange();
             }
         } );
 
@@ -498,7 +504,7 @@ public class LazyScalesApplication
     private void sharpFlatUpdated()
     {
         refreshNoteCombo();
-        scaleOrNoteOrTuningOrSignChange();
+        scaleOrNoteOrSignChange();
     }
 
     private void refreshNoteCombo()
@@ -548,5 +554,16 @@ public class LazyScalesApplication
             rootNode.add( node );
             addScaleFamilyChildren( node );
         }
+    }
+
+    private Tuning getCurrentTuning()
+    {
+        int selectedTuningIndex = tuningList.getSelectedIndex();
+        if ( selectedTuningIndex == -1 )
+        {
+            return null;
+        }
+        Tuning tuning = (Tuning) tuningListData.elementAt( selectedTuningIndex );
+        return tuning;
     }
 }

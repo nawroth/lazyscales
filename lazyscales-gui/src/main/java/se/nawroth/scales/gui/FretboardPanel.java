@@ -162,18 +162,23 @@ public class FretboardPanel extends JPanel
         g2.setRenderingHint( RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON );
 
+        if ( tuning == null )
+        {
+            return;
+        }
+        numberOfStrings = tuning.size();
+
         calculateSizes();
 
         g2.setStroke( getStroke( strokeWidth ) );
 
         paintEmptyFretboard( g2 );
 
-        if ( notes == null || tuning == null )
+        if ( notes == null )
         {
             return;
         }
 
-        numberOfStrings = tuning.size();
         boolean isFlat = notes.isFlat();
 
         Iterator<Iterable<Note>> stringIter = getFretboardStringsIterator( notes );
