@@ -200,7 +200,7 @@ public class LazyScalesApplication
         tuningFamilyPath[0] = tuningData.getRoot();
         tuningFamilyPath[1] = tuningData.getChild( tuningFamilyPath[0], 0 );
         if ( ( (TuningFamily) ( (DefaultMutableTreeNode) tuningFamilyPath[1] ).getUserObject() ).getName()
-                .equals( "Standard tunings" ) )
+                .equals( "Standard guitar tunings" ) )
         {
             tuningFamilyTree.setSelectionPath( new TreePath( tuningFamilyPath ) );
         }

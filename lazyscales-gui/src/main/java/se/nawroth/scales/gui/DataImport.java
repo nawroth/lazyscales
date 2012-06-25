@@ -20,6 +20,7 @@
 package se.nawroth.scales.gui;
 
 import static se.nawroth.scales.api.DiatonicInterval.FOURTH;
+import static se.nawroth.scales.api.DiatonicInterval.FIFTH;
 import static se.nawroth.scales.api.DiatonicInterval.MAJOR_SECOND;
 import static se.nawroth.scales.api.DiatonicInterval.MAJOR_THIRD;
 import static se.nawroth.scales.api.DiatonicInterval.MINOR_SECOND;
@@ -147,21 +148,18 @@ public class DataImport
                             MAJOR_SECOND, MAJOR_SECOND );
 
             services.getScaleService()
-                    .newScales(
-                            symmetric,
+                    .newScales( symmetric,
                             new String[] { "Diminished", "Octatonic" },
-                            MAJOR_SECOND,
-                            MINOR_SECOND, MAJOR_SECOND, MINOR_SECOND,
                             MAJOR_SECOND, MINOR_SECOND, MAJOR_SECOND,
-                            MINOR_SECOND );
+                            MINOR_SECOND, MAJOR_SECOND, MINOR_SECOND,
+                            MAJOR_SECOND, MINOR_SECOND );
 
             services.getScaleService()
                     .newScales(
                             symmetric,
                             new String[] { "Augmented", "Augmented (inverse)" },
-                            MINOR_THIRD,
-                            MINOR_SECOND, MINOR_THIRD, MINOR_SECOND,
-                            MINOR_THIRD, MINOR_SECOND );
+                            MINOR_THIRD, MINOR_SECOND, MINOR_THIRD,
+                            MINOR_SECOND, MINOR_THIRD, MINOR_SECOND );
 
             ScaleFamily blues = services.getScaleFamilyService()
                     .newScaleFamily( rootScaleFamily, "Blues" );
@@ -190,18 +188,16 @@ public class DataImport
                             MINOR_SECOND );
             services.getScaleService()
                     .newScale( japanesePentatonic, "Hirajōshi (Sachs)",
-                            MINOR_SECOND,
-                            MAJOR_THIRD, MINOR_SECOND, MAJOR_THIRD,
-                            MAJOR_SECOND );
+                            MINOR_SECOND, MAJOR_THIRD, MINOR_SECOND,
+                            MAJOR_THIRD, MAJOR_SECOND );
             services.getScaleService()
                     .newScale( japanesePentatonic, "Hirajōshi (Kosta & Payne)",
                             MAJOR_SECOND, MINOR_SECOND, MAJOR_THIRD,
                             MINOR_SECOND, MAJOR_THIRD );
             services.getScaleService()
                     .newScale( japanesePentatonic, "Miyako-bushi",
-                            MINOR_SECOND,
-                            MAJOR_THIRD, MAJOR_SECOND, MINOR_SECOND,
-                            MAJOR_THIRD );
+                            MINOR_SECOND, MAJOR_THIRD, MAJOR_SECOND,
+                            MINOR_SECOND, MAJOR_THIRD );
 
             ScaleFamily bebop = services.getScaleFamilyService()
                     .newScaleFamily( rootScaleFamily, "Bebop" );
@@ -236,18 +232,31 @@ public class DataImport
                             MINOR_SECOND, MINOR_SECOND, MAJOR_SECOND,
                             MAJOR_SECOND );
 
-            TuningFamily standard = services.getTuningFamilyService()
+            TuningFamily guitarTunings = services.getTuningFamilyService()
                     .newTuningFamily( services.getTuningFamilyService()
-                            .getRootTuningFamily(), "Standard tunings" );
+                            .getRootTuningFamily(), "Standard guitar tunings" );
             Tuning myTuning = services.getTuningService()
-                    .newTuning( standard, "E♭ tuning",
+                    .newTuning( guitarTunings, "E♭ tuning",
                             services.getNoteService()
                                     .note( NoteRepository.E_FLAT ), FOURTH,
                             FOURTH, FOURTH, MAJOR_THIRD, FOURTH );
             services.getTuningService()
-                    .newTuning( standard, "Standard tuning",
+                    .newTuning( guitarTunings, "Standard guitar tuning",
                             services.getNoteService()
                                     .note( NoteRepository.E ), myTuning );
+            TuningFamily bassTunings = services.getTuningFamilyService()
+                    .newTuningFamily( services.getTuningFamilyService()
+                            .getRootTuningFamily(), "Standard bass tunings" );
+            services.getTuningService()
+                    .newTuning( bassTunings, "Standard bass tuning",
+                            services.getNoteService()
+                                    .note( NoteRepository.E ), FOURTH, FOURTH,
+                            FOURTH );
+            services.getTuningService()
+                    .newTuning( bassTunings, "Fifths bass tuning (CGDA)",
+                            services.getNoteService()
+                                    .note( NoteRepository.C ), FIFTH, FIFTH,
+                            FIFTH );
             tx.success();
         }
         finally
