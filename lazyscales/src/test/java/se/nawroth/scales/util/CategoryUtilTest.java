@@ -72,18 +72,16 @@ public class CategoryUtilTest
         Category root = getRootCategory();
         rootNode = root.getUnderlyingNode();
         Category main = new Category( db.createNode(), getNavigation(), root,
-        "" );
+                "" );
         mainCatNode = main.getUnderlyingNode();
         Item directItem = new Item( db.createNode(), getNavigation(), main, "" );
         directItemNode = directItem.getUnderlyingNode();
         Category subCat1 = new Category( db.createNode(), getNavigation(),
                 main, "subcat1" );
-        @SuppressWarnings( "unused" )
-        Item undirectItem = new Item( db.createNode(), getNavigation(),
-                subCat1, "" );
-        @SuppressWarnings( "unused" )
-        Category subCatChild = new Category( db.createNode(), getNavigation(),
-                subCat1, "" );
+        @SuppressWarnings( "unused" ) Item undirectItem = new Item(
+                db.createNode(), getNavigation(), subCat1, "" );
+        @SuppressWarnings( "unused" ) Category subCatChild = new Category(
+                db.createNode(), getNavigation(), subCat1, "" );
         tx.success();
         tx.finish();
     }
@@ -135,7 +133,9 @@ public class CategoryUtilTest
     public void testGetSubCategories()
     {
         Category rootCat = getRootCategory();
-        Category mainCat = getNavigation().getSubCategories( rootCat ).iterator().next();
+        Category mainCat = getNavigation().getSubCategories( rootCat )
+                .iterator()
+                .next();
         assertEquals( mainCatNode, mainCat.getUnderlyingNode() );
     }
 
@@ -143,8 +143,12 @@ public class CategoryUtilTest
     public void testGetParentCategories()
     {
         Category rootCat = getRootCategory();
-        Category mainCat = getNavigation().getSubCategories( rootCat ).iterator().next();
-        Category parentCat = getNavigation().getParentCategories( mainCat ).iterator().next();
+        Category mainCat = getNavigation().getSubCategories( rootCat )
+                .iterator()
+                .next();
+        Category parentCat = getNavigation().getParentCategories( mainCat )
+                .iterator()
+                .next();
         assertEquals( rootNode, parentCat.getUnderlyingNode() );
     }
 
@@ -155,7 +159,8 @@ public class CategoryUtilTest
                 CategoryTypes.CATEGORY, CategoryTypes.ITEM );
         Item item = new Item( itemNode, getNavigation() );
         Iterable<Category> cats = getNavigation().getCategories( item );
-        Category firstCat = cats.iterator().next();
+        Category firstCat = cats.iterator()
+                .next();
         assertEquals( mainCatNode, firstCat.getUnderlyingNode() );
     }
 
@@ -163,8 +168,12 @@ public class CategoryUtilTest
     public void testGetDirectItems()
     {
         Category rootCat = getRootCategory();
-        Category mainCat = getNavigation().getSubCategories( rootCat ).iterator().next();
-        Item directiItem = getNavigation().getDirectItems( mainCat ).iterator().next();
+        Category mainCat = getNavigation().getSubCategories( rootCat )
+                .iterator()
+                .next();
+        Item directiItem = getNavigation().getDirectItems( mainCat )
+                .iterator()
+                .next();
         assertEquals( directItemNode, directiItem.getUnderlyingNode() );
     }
 
@@ -172,7 +181,9 @@ public class CategoryUtilTest
     public void testGetAllItems()
     {
         Category rootCat = getRootCategory();
-        Category mainCat = getNavigation().getSubCategories( rootCat ).iterator().next();
+        Category mainCat = getNavigation().getSubCategories( rootCat )
+                .iterator()
+                .next();
         int i = 0;
         for ( @SuppressWarnings( "unused" ) Item item : getNavigation().getAllItems(
                 mainCat ) )
@@ -202,7 +213,9 @@ public class CategoryUtilTest
         try
         {
             Category rootCat = getRootCategory();
-            Category mainCat = getNavigation().getSubCategories( rootCat ).iterator().next();
+            Category mainCat = getNavigation().getSubCategories( rootCat )
+                    .iterator()
+                    .next();
             new Item( db.createNode(), getNavigation(), mainCat, "" );
             int i = 0;
             for ( @SuppressWarnings( "unused" ) Item item : getNavigation().getAllItems(
@@ -225,7 +238,9 @@ public class CategoryUtilTest
         try
         {
             Category rootCat = getRootCategory();
-            Category mainCat = getNavigation().getSubCategories( rootCat ).iterator().next();
+            Category mainCat = getNavigation().getSubCategories( rootCat )
+                    .iterator()
+                    .next();
             Item newItem = new Item( db.createNode(), getNavigation() );
             boolean wasAdded = getNavigation().addItem( mainCat, newItem );
             assertEquals( true, wasAdded );
@@ -245,7 +260,9 @@ public class CategoryUtilTest
         try
         {
             Category rootCat = getRootCategory();
-            Category mainCat = getNavigation().getSubCategories( rootCat ).iterator().next();
+            Category mainCat = getNavigation().getSubCategories( rootCat )
+                    .iterator()
+                    .next();
             List<Item> items = new ArrayList<Item>();
             items.add( new Item( db.createNode(), getNavigation() ) );
             items.add( new Item( db.createNode(), getNavigation() ) );
@@ -272,8 +289,11 @@ public class CategoryUtilTest
         try
         {
             Category rootCat = getRootCategory();
-            Category mainCat = getNavigation().getSubCategories( rootCat ).iterator().next();
-            new Category( db.createNode(), getNavigation(), mainCat, "" );
+            Category mainCat = getNavigation().getSubCategories( rootCat )
+                    .iterator()
+                    .next();
+            new Category( db.createNode(), getNavigation(), mainCat,
+                    "testAddCategory" );
             int i = 0;
             for ( @SuppressWarnings( "unused" ) Category category : getNavigation().getSubCategories(
                     mainCat ) )
@@ -295,7 +315,9 @@ public class CategoryUtilTest
         try
         {
             Category rootCat = getRootCategory();
-            Category mainCat = getNavigation().getSubCategories( rootCat ).iterator().next();
+            Category mainCat = getNavigation().getSubCategories( rootCat )
+                    .iterator()
+                    .next();
             Category newCat = new Category( db.createNode(), getNavigation() );
             boolean wasLinked = getNavigation().addCategory( mainCat, newCat );
             assertEquals( true, wasLinked );
@@ -315,7 +337,9 @@ public class CategoryUtilTest
         try
         {
             Category rootCat = getRootCategory();
-            Category mainCat = getNavigation().getSubCategories( rootCat ).iterator().next();
+            Category mainCat = getNavigation().getSubCategories( rootCat )
+                    .iterator()
+                    .next();
             List<Category> categories = new ArrayList<Category>();
             categories.add( new Category( db.createNode(), getNavigation() ) );
             categories.add( new Category( db.createNode(), getNavigation() ) );
@@ -342,8 +366,12 @@ public class CategoryUtilTest
         try
         {
             Category rootCat = getRootCategory();
-            Category mainCat = getNavigation().getSubCategories( rootCat ).iterator().next();
-            Item directiItem = getNavigation().getDirectItems( mainCat ).iterator().next();
+            Category mainCat = getNavigation().getSubCategories( rootCat )
+                    .iterator()
+                    .next();
+            Item directiItem = getNavigation().getDirectItems( mainCat )
+                    .iterator()
+                    .next();
             getNavigation().removeItem( mainCat, directiItem );
             int i = 0;
             for ( @SuppressWarnings( "unused" ) Item item : getNavigation().getDirectItems(
@@ -366,8 +394,12 @@ public class CategoryUtilTest
         try
         {
             Category rootCat = getRootCategory();
-            Category mainCat = getNavigation().getSubCategories( rootCat ).iterator().next();
-            Item directiItem = getNavigation().getDirectItems( mainCat ).iterator().next();
+            Category mainCat = getNavigation().getSubCategories( rootCat )
+                    .iterator()
+                    .next();
+            Item directiItem = getNavigation().getDirectItems( mainCat )
+                    .iterator()
+                    .next();
             boolean wasRemoved = getNavigation().removeItem( mainCat,
                     directiItem );
             assertEquals( true, wasRemoved );
@@ -387,7 +419,9 @@ public class CategoryUtilTest
         try
         {
             Category rootCat = getRootCategory();
-            Category mainCat = getNavigation().getSubCategories( rootCat ).iterator().next();
+            Category mainCat = getNavigation().getSubCategories( rootCat )
+                    .iterator()
+                    .next();
             List<Item> items = new ArrayList<Item>();
             Item item1 = new Item( db.createNode(), getNavigation() );
             Item item2 = new Item( db.createNode(), getNavigation() );
@@ -399,7 +433,9 @@ public class CategoryUtilTest
             assertEquals( true, wasRemoved );
             wasRemoved = getNavigation().removeItem( mainCat, item2 );
             assertEquals( true, wasRemoved );
-            boolean hasItems = getNavigation().getDirectItems( rootCat ).iterator().hasNext();
+            boolean hasItems = getNavigation().getDirectItems( rootCat )
+                    .iterator()
+                    .hasNext();
             assertEquals( true, hasItems );
         }
         finally
@@ -415,9 +451,13 @@ public class CategoryUtilTest
         try
         {
             Category rootCat = getRootCategory();
-            Category mainCat = getNavigation().getSubCategories( rootCat ).iterator().next();
+            Category mainCat = getNavigation().getSubCategories( rootCat )
+                    .iterator()
+                    .next();
             List<Item> items = new ArrayList<Item>();
-            Item directiItem = getNavigation().getDirectItems( mainCat ).iterator().next();
+            Item directiItem = getNavigation().getDirectItems( mainCat )
+                    .iterator()
+                    .next();
             items.add( directiItem );
             getNavigation().removeItems( mainCat, items );
             int i = 0;
@@ -441,8 +481,12 @@ public class CategoryUtilTest
         try
         {
             Category rootCat = getRootCategory();
-            Category mainCat = getNavigation().getSubCategories( rootCat ).iterator().next();
-            Category subCat = getNavigation().getSubCategories( mainCat ).iterator().next();
+            Category mainCat = getNavigation().getSubCategories( rootCat )
+                    .iterator()
+                    .next();
+            Category subCat = getNavigation().getSubCategories( mainCat )
+                    .iterator()
+                    .next();
             getNavigation().removeCategory( mainCat, subCat );
             int i = 0;
             for ( @SuppressWarnings( "unused" ) Category category : getNavigation().getSubCategories(
@@ -465,8 +509,12 @@ public class CategoryUtilTest
         try
         {
             Category rootCat = getRootCategory();
-            Category mainCat = getNavigation().getSubCategories( rootCat ).iterator().next();
-            Category subCat = getNavigation().getSubCategories( mainCat ).iterator().next();
+            Category mainCat = getNavigation().getSubCategories( rootCat )
+                    .iterator()
+                    .next();
+            Category subCat = getNavigation().getSubCategories( mainCat )
+                    .iterator()
+                    .next();
             boolean wasRemoved = getNavigation().removeCategory( mainCat,
                     subCat );
             assertEquals( true, wasRemoved );
@@ -486,9 +534,13 @@ public class CategoryUtilTest
         try
         {
             Category rootCat = getRootCategory();
-            Category mainCat = getNavigation().getSubCategories( rootCat ).iterator().next();
+            Category mainCat = getNavigation().getSubCategories( rootCat )
+                    .iterator()
+                    .next();
             List<Category> categories = new ArrayList<Category>();
-            Category subCat = getNavigation().getSubCategories( mainCat ).iterator().next();
+            Category subCat = getNavigation().getSubCategories( mainCat )
+                    .iterator()
+                    .next();
             categories.add( subCat );
             getNavigation().removeCategories( mainCat, categories );
             int i = 0;

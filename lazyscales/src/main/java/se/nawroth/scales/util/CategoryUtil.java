@@ -20,19 +20,16 @@
 package se.nawroth.scales.util;
 
 import static org.neo4j.graphdb.Direction.INCOMING;
-import static org.neo4j.graphdb.Direction.OUTGOING;
 
-import org.neo4j.graphdb.Direction;
+import org.neo4j.cypher.javacompat.ExecutionEngine;
+import org.neo4j.cypher.javacompat.ExecutionResult;
+import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Node;
-import org.neo4j.graphdb.Path;
 import org.neo4j.graphdb.Relationship;
 import org.neo4j.graphdb.RelationshipType;
-import org.neo4j.graphdb.traversal.Evaluation;
-import org.neo4j.graphdb.traversal.Evaluator;
-import org.neo4j.graphdb.traversal.Evaluators;
-import org.neo4j.graphdb.traversal.TraversalDescription;
 import org.neo4j.helpers.collection.IterableWrapper;
-import org.neo4j.kernel.Traversal;
+import org.neo4j.helpers.collection.IteratorUtil;
+import org.neo4j.helpers.collection.MapUtil;
 
 /**
  * Helper class to simplify navigating category/item (parent/child) structures.
@@ -46,8 +43,13 @@ public abstract class CategoryUtil<C extends Entity, I extends Entity>
 {
     private final RelationshipType categoryType;
     private final RelationshipType itemType;
-    private final TraversalDescription allItemsInCategory;
-    private final TraversalDescription allCategoriesInCategory;
+    private final String subCategoriesInCategory;
+    private final String allCategoriesForItem;
+    private final String parentCategoriesOfCategory;
+    private final String directItemsFromCategory;
+    private final String allItemsFromCategory;
+    private final String allCategoriesInCategory;
+    private static ExecutionEngine executionEngine;
 
     /**
      * Create instance from {@link RelationshipType}s.
@@ -61,30 +63,26 @@ public abstract class CategoryUtil<C extends Entity, I extends Entity>
         this.categoryType = category;
         this.itemType = item;
 
-        // set up traversers
-        allCategoriesInCategory = Traversal.description().relationships(
-                categoryType, OUTGOING ).evaluator(
-                Evaluators.excludeStartPosition() );
-        allItemsInCategory = allCategoriesInCategory.relationships( itemType,
-                OUTGOING ).evaluator( new Evaluator()
-        {
-            @Override
-            public Evaluation evaluate( final Path path )
-            {
-                if ( path.length() == 0 )
-                {
-                    return Evaluation.EXCLUDE_AND_CONTINUE;
-                }
-                if ( path.lastRelationship().isType( itemType ) )
-                {
-                    return Evaluation.INCLUDE_AND_PRUNE;
-                }
-                else
-                {
-                    return Evaluation.EXCLUDE_AND_CONTINUE;
-                }
-            }
-        } );
+        // set up queries
+        subCategoriesInCategory = "start category=node({startingNode}) match category-[:"
+                                  + categoryType
+                                  + "]->categories return categories";
+        allCategoriesInCategory = "start category=node({startingNode}) match category-[:"
+                                  + categoryType
+                                  + "*1..]->categories return categories";
+        parentCategoriesOfCategory = "start category=node({startingNode}) match category<-[:"
+                                     + categoryType
+                                     + "]-categories return categories";
+        allCategoriesForItem = "start item=node({startingNode}) match item<-[:"
+                               + categoryType + "|" + itemType
+                               + "]-categories return categories";
+        directItemsFromCategory = "start category=node({startingNode}) match category-[:"
+                                  + itemType + "]->items return items";
+        allItemsFromCategory = "start category=node({startingNode}) match category-[:"
+                               + categoryType
+                               + "|"
+                               + itemType
+                               + "]->items return items";
     }
 
     /**
@@ -121,8 +119,8 @@ public abstract class CategoryUtil<C extends Entity, I extends Entity>
      */
     public final Iterable<C> getSubCategories( final C category )
     {
-        return getCategories( category.getUnderlyingNode(), categoryType,
-                OUTGOING );
+        return getCategoriesFromQuery( subCategoriesInCategory,
+                category.getUnderlyingNode() );
     }
 
     /**
@@ -133,8 +131,8 @@ public abstract class CategoryUtil<C extends Entity, I extends Entity>
      */
     public final Iterable<C> getParentCategories( final C category )
     {
-        return getCategories( category.getUnderlyingNode(), categoryType,
-                INCOMING );
+        return getCategoriesFromQuery( parentCategoriesOfCategory,
+                category.getUnderlyingNode() );
     }
 
     /**
@@ -146,20 +144,48 @@ public abstract class CategoryUtil<C extends Entity, I extends Entity>
      */
     public final Iterable<C> getCategories( final I item )
     {
-        return getCategories( item.getUnderlyingNode(), itemType, INCOMING );
+        return getCategoriesFromQuery( allCategoriesForItem,
+                item.getUnderlyingNode() );
     }
 
-    private Iterable<C> getCategories( final Node node,
-            final RelationshipType type, final Direction direction )
+    private ExecutionResult executeQuery( final String query,
+            final Node startingPoint )
     {
-        return new IterableWrapper<C, Relationship>( node.getRelationships(
-                type, direction ) )
+        if ( executionEngine == null )
+        {
+            GraphDatabaseService database = startingPoint.getGraphDatabase();
+            executionEngine = new ExecutionEngine( database );
+        }
+        return executionEngine.execute( query,
+                MapUtil.map( "startingNode", startingPoint ) );
+    }
+
+    private Iterable<C> getCategoriesFromQuery( final String query,
+            final Node startingPoint )
+    {
+        ExecutionResult result = executeQuery( query, startingPoint );
+        return new IterableWrapper<C, Node>(
+                IteratorUtil.<Node>loop( result.<Node>columnAs( "categories" ) ) )
         {
             @Override
-            protected C underlyingObjectToObject(
-                    final Relationship relationship )
+            protected C underlyingObjectToObject( final Node node )
             {
-                return categoryFromNode( relationship.getOtherNode( node ) );
+                return categoryFromNode( node );
+            }
+        };
+    }
+
+    private Iterable<I> getItemsFromQuery( final String query,
+            final Node startingPoint )
+    {
+        ExecutionResult result = executeQuery( query, startingPoint );
+        return new IterableWrapper<I, Node>(
+                IteratorUtil.<Node>loop( result.<Node>columnAs( "items" ) ) )
+        {
+            @Override
+            protected I underlyingObjectToObject( final Node node )
+            {
+                return itemFromNode( node );
             }
         };
     }
@@ -174,16 +200,7 @@ public abstract class CategoryUtil<C extends Entity, I extends Entity>
     public final Iterable<I> getDirectItems( final C category )
     {
         final Node node = category.getUnderlyingNode();
-        return new IterableWrapper<I, Relationship>( node.getRelationships(
-                itemType, OUTGOING ) )
-        {
-            @Override
-            protected I underlyingObjectToObject(
-                    final Relationship relationship )
-            {
-                return itemFromNode( relationship.getOtherNode( node ) );
-            }
-        };
+        return getItemsFromQuery( directItemsFromCategory, node );
     }
 
     /**
@@ -195,15 +212,7 @@ public abstract class CategoryUtil<C extends Entity, I extends Entity>
     public final Iterable<I> getAllItems( final C category )
     {
         final Node node = category.getUnderlyingNode();
-        return new IterableWrapper<I, Node>(
-                allItemsInCategory.traverse( node ).nodes() )
-        {
-            @Override
-            protected I underlyingObjectToObject( final Node node )
-            {
-                return itemFromNode( node );
-            }
-        };
+        return getItemsFromQuery( allItemsFromCategory, node );
     }
 
     /**
@@ -214,16 +223,8 @@ public abstract class CategoryUtil<C extends Entity, I extends Entity>
      */
     public final Iterable<C> getAllSubCategories( final C category )
     {
-        final Node node = category.getUnderlyingNode();
-        return new IterableWrapper<C, Node>( allCategoriesInCategory.traverse(
-                node ).nodes() )
-        {
-            @Override
-            protected C underlyingObjectToObject( final Node node )
-            {
-                return categoryFromNode( node );
-            }
-        };
+        return getCategoriesFromQuery( allCategoriesInCategory,
+                category.getUnderlyingNode() );
     }
 
     /**
@@ -332,7 +333,8 @@ public abstract class CategoryUtil<C extends Entity, I extends Entity>
     {
         for ( Relationship rel : to.getRelationships( type, INCOMING ) )
         {
-            if ( rel.getStartNode().equals( from ) )
+            if ( rel.getStartNode()
+                    .equals( from ) )
             {
                 return rel;
             }

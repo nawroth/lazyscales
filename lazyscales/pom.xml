@@ -13,7 +13,7 @@
   <name>LazyScales</name>
   <description>LazyScales is a library that handles scales and chords using a graphdb backend.</description>
   <properties>
-    <neo4j.version>1.8.M05</neo4j.version>
+    <neo4j.version>1.8-SNAPSHOT</neo4j.version>
     <license-text.header>GPL-3-header.txt</license-text.header>
   </properties>
 
@@ -21,6 +21,11 @@
     <dependency>
       <groupId>org.neo4j</groupId>
       <artifactId>neo4j-kernel</artifactId>
+      <version>${neo4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.neo4j</groupId>
+      <artifactId>neo4j-cypher</artifactId>
       <version>${neo4j.version}</version>
     </dependency>
     <dependency>
