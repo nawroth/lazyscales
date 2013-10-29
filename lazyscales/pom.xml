@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.neo4j.build</groupId>
     <artifactId>parent-central</artifactId>
-    <version>35</version>
+    <version>40</version>
     <relativePath />
   </parent>
   <groupId>se.nawroth</groupId>
@@ -13,7 +13,7 @@
   <name>LazyScales</name>
   <description>LazyScales is a library that handles scales and chords using a graphdb backend.</description>
   <properties>
-    <neo4j.version>1.9-SNAPSHOT</neo4j.version>
+    <neo4j.version>1.9.4</neo4j.version>
     <license-text.header>GPL-3-header.txt</license-text.header>
   </properties>
 
@@ -40,18 +40,6 @@
       <artifactId>junit</artifactId>
     </dependency>
   </dependencies>
-
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 
   <developers>
     <developer>

@@ -3,7 +3,7 @@
   <parent>
     <groupId>org.neo4j.build</groupId>
     <artifactId>parent-central</artifactId>
-    <version>33</version>
+    <version>40</version>
     <relativePath />
   </parent>
   <groupId>se.nawroth</groupId>
@@ -25,7 +25,7 @@
     <dependency>
       <groupId>com.github.insubstantial</groupId>
       <artifactId>substance</artifactId>
-      <version>7.1</version>
+      <version>7.2.1</version>
     </dependency>
     <dependency>
       <groupId>com.miglayout</groupId>
@@ -85,7 +85,7 @@
       <plugin>
         <groupId>com.akathist.maven.plugins.launch4j</groupId>
         <artifactId>launch4j-maven-plugin</artifactId>
-        <version>1.5.1</version>
+        <version>1.5.2</version>
         <executions>
           <execution>
             <id>launch4j</id>
@@ -104,7 +104,7 @@
                 <mainClass>se.nawroth.scales.gui.LazyScalesApplication</mainClass>
               </classPath>
               <jre>
-                <minVersion>1.6.0</minVersion>
+                <minVersion>1.7.0</minVersion>
               </jre>
               <versionInfo>
                 <fileVersion>0.3.0.0</fileVersion>

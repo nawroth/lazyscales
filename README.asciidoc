@@ -8,7 +8,7 @@ I wanted to see how this line of thought works out in practice, and also, if it 
 
 To start with, this is how scales are represented by _relationships_ in the database:
 
-image::lazyscales/raw/master/docs/images/diatonic.png[Diatonic Scales]
+image::https://raw.github.com/nawroth/lazyscales/master/docs/images/diatonic.png[Diatonic Scales]
 
 So a scale is just a series of _intervals_.
 And as the scale doesn't really end after one octave, it's connected back to itself with the last interval.
@@ -21,7 +21,7 @@ The image above depicts some modes of the common Ionian scale (that's just a pla
 To keep track of all the scales I like to put them into families (and subfamilies).
 Here's an example with a minimal set of data:
 
-image::lazyscales/raw/master/docs/images/scale-families.png[Scale Families]
+image::https://raw.github.com/nawroth/lazyscales/master/docs/images/scale-families2.png[Scale Families]
 
 The Chromatic scale is a special case; there's a shortcut to it for internal use in the application.
 
@@ -29,7 +29,7 @@ The Chromatic scale is a special case; there's a shortcut to it for internal use
 
 Notes are represented by _nodes_ in the database:
 
-image::lazyscales/raw/master/docs/images/notes.png[Notes]
+image::https://raw.github.com/nawroth/lazyscales/master/docs/images/notes2.png[Notes]
 
 The database is populated with all possible relationships between the notes -- the image is just a small excerpt of that data.
 
@@ -53,7 +53,7 @@ And you might not be aware of it, but people tune their guitars in a lot differe
 In my case I go for something called E-flat tuning, meaning that I tune all strings down by a half step compared to the standard guitar tuning.
 Let's have a look at how to represent this in the database.
 
-image::lazyscales/raw/master/docs/images/tunings.png[Tunings]
+image::https://raw.github.com/nawroth/lazyscales/master/docs/images/tunings.png[Tunings]
 
 Again, we use intervals as the basis.
 The intervals will also implicitly tell us how many strings there are on the instrument!
@@ -73,11 +73,11 @@ To remedy that, I wrote up a GUI which visualizes the notes on a fretboard as we
 
 This is the C major scale projected on a standard tuned guitar:
 
-image::lazyscales/raw/master/docs/images/gui.png[GUI with C major]
+image::https://raw.github.com/nawroth/lazyscales/master/docs/images/gui2.png[GUI with C major]
 
 One feature I specifically wanted is the ability to combine two scales on the fretboard:
 
-image::lazyscales/raw/master/docs/images/cmajor-bminorpenta.png[GUI with C major and B minor penta]
+image::https://raw.github.com/nawroth/lazyscales/master/docs/images/cmajor-bminorpenta.png[GUI with C major and B minor penta]
 
 In this case there's a B minor pentatonic scale added to the C major scale.
 These scales have a lot of notes in common, but F and G are only there in the C major scale, while F# is only present in the B minor penta.
@@ -89,9 +89,7 @@ To build the application from source, use Apache Maven.
 It works at least with Maven version 3.
 Even the Windows exectuable is built using Maven.
 
-Prebuilt dowloads are found at https://github.com/nawroth/lazyscales/downloads
-
-Java version 6 or newer is required to run the application.
+Java version 7 or newer is required to run the application.
 
 The GUI was created by using the WindowBuilder editor in Eclipse IDE.
 The looks come from a fork of the excellent Substance library.
