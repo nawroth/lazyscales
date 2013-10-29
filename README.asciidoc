@@ -90,6 +90,10 @@ It works at least with Maven version 3.
 Even the Windows exectuable is built using Maven.
 
 Java version 7 or newer is required to run the application.
+Download current snapshot builds from here:
+
+* https://copy.com/HEpeQGqwaF2j[Windows executable]
+* https://copy.com/I4ZvLgKYUdlq[Executable jar file, cross-platform]
 
 The GUI was created by using the WindowBuilder editor in Eclipse IDE.
 The looks come from a fork of the excellent Substance library.
